@@ -1,0 +1,77 @@
+/* DashboardNavBar.css */
+.dashboard-navbar {
+  background-color: #0074D9;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 29px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Slightly more intense shadow */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+}
+
+.dashboard-navbar:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* More intense shadow on hover */
+}
+
+.navbar-logo a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold; /* Make logo stand out */
+  transition: color 0.3s ease;
+}
+
+.navbar-logo a:hover {
+  color: #FFDD57; /* Change color on hover */
+}
+
+.navbar-links {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #FFDD57; /* Change text color on hover */
+  text-decoration: underline;
+}
+
+.navbar-links a:focus {
+  outline: 2px solid #FFDD57; /* Add focus outline for accessibility */
+}
+
+.navbar-links .active {
+  color: #FFDD57; /* Highlight active link */
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .dashboard-navbar {
+    flex-direction: column; /* Stack navbar items vertically on smaller screens */
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .navbar-links {
+    flex-direction: column; /* Stack links vertically */
+    margin-top: 10px;
+  }
+
+  .navbar-links li {
+    margin: 10px 0;
+  }
+}

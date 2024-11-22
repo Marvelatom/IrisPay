@@ -1,0 +1,12 @@
+import pickle
+
+# Specify the path to your .pkl file
+
+pkl_file_path = r'C:\Users\remna\Downloads\IrisRecognition_ML\src\templates\CASIA1\template_db.pkl'
+
+# Open and load the pickle file
+with open(pkl_file_path, 'rb') as f:
+    data = pickle.load(f)
+
+# Print the loaded data
+print(data)
