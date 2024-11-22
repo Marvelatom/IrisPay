@@ -1,4 +1,3 @@
-// server.js or app.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -6,32 +5,42 @@ const authRoutes = require('./routes/auth'); // Ensure the path is correct
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+// Configure CORS with your frontend URL
+app.use(cors({
+  origin: ['https://iris-pay.netlify.app'], // Updated frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  credentials: true, // Allow cookies or other credentials if needed
+}));
+
 const pythonScriptRouter = require('./routes/pythonScriptRouter');
 app.use('/api', pythonScriptRouter);
 
-mongoose.connect('mongodb://localhost:27017/hello', {
+mongoose.connect('mongodb+srv://Marvelatom:Marvel%40123@cluster0.hxlve.mongodb.net/hello', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
 })
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log(err));
+.then(() => console.log('MongoDB connected'))
+.catch((err) => {
+  console.error('MongoDB connection error:', err.message);
+});
+
+ 
+
+
 app.use('/api/auth', authRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const verifyIrisRoute = require('./routes/verifyIrisRoute');
 app.use('/api', verifyIrisRoute);
 
-
 const imageUploadRouter = require('./routes/imageUpload'); // Adjust the path as necessary
-
-
-// Use the image upload router
 app.use('/api', imageUploadRouter);
 
-const captureIrisRoute = require('./routes/SignupageUpload'); 
+const captureIrisRoute = require('./routes/SignupageUpload');
 app.use('/api/auth', captureIrisRoute);
 
 const forgotPasswordRoute = require('./routes/forgotPassword');
@@ -44,7 +53,6 @@ const razorpayInstance = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
-
 
 const jwt = require('jsonwebtoken');
 
@@ -83,9 +91,3 @@ app.post('/api/create-order', verifyToken, (req, res) => {
     res.json({ orderId: order.id, amount: order.amount });
   });
 });
-
-
-
-
-
-

@@ -76,7 +76,7 @@ const TransferMoneyModal = ({ onClose, onTransfer }) => {
         const formDataToSend = new FormData();
         formDataToSend.append('irisImage', blob, filename);
   
-        fetch("http://localhost:5000/api/upload-iris", {
+        fetch("https://irispay.onrender.com/api/upload-iris", {
           method: "POST",
           body: formDataToSend,
         })
@@ -87,7 +87,7 @@ const TransferMoneyModal = ({ onClose, onTransfer }) => {
             stopCamera();
   
             // After image upload, proceed with iris verification
-            fetch("http://localhost:5000/api/verify-iris", {
+            fetch("https://irispay.onrender.com/api/verify-iris", {
               method: "POST",
               headers: {
                 'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ const TransferMoneyModal = ({ onClose, onTransfer }) => {
   // Function to create Razorpay order after successful iris verification
  // Razorpay order creation function
 const createRazorpayOrder = () => {
-  fetch("http://localhost:5000/api/create-order", {
+  fetch("https://irispay.onrender.com/api/create-order", {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',

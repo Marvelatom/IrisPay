@@ -31,12 +31,13 @@ function Signup() {
       // 1. Trigger the Python script to process the image
       setIsProcessing(true);
 
-      const pythonResponse = await fetch('http://localhost:5000/api/run-python-script', {
+      const pythonResponse = await fetch('https://irispay.onrender.com/api/run-python-script', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
       });
+      
 
       const pythonData = await pythonResponse.json();
 
@@ -47,7 +48,7 @@ function Signup() {
         // 2. Proceed with user registration now that iris is registered
         const userData = { email, password, name, phone, dob, bankName, ifscCode };
 
-        const response = await fetch('http://localhost:5000/api/auth/register', {
+        const response = await fetch('https://irispay.onrender.com/api/auth/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ function Signup() {
       setIsLoading(true);
 
       // 1. Trigger the iris capture process by sending a POST request to the backend
-      const captureResponse = await fetch('http://localhost:5000/api/auth/capture-iris-image', {
+      const captureResponse = await fetch('https://irispay.onrender.com/api/auth/capture-iris-image', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ function NavBar() {
 
   const handleSignOut = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signout', {
+      const response = await fetch('https://irispay.onrender.com/api/auth/signout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
