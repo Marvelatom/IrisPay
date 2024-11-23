@@ -7,16 +7,11 @@ const app = express();
 app.use(express.json());
 
 // Configure CORS with your frontend URL
-
-
-// Update the CORS middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://iris-pay.netlify.app'], // Allow both dev and prod URLs
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-  credentials: true, // Allow cookies and credentials
+  origin: ['https://iris-pay.netlify.app/'], // Updated frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  credentials: true, // Allow cookies or other credentials if needed
 }));
-
 app.options('*', cors());
 
 const pythonScriptRouter = require('./routes/pythonScriptRouter');
