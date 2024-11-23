@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/capture-iris-image', async (req, res) => {
   try {
     // Path to the Python script for capturing the iris image
-    const pythonScript = 'python D:\\Capstone\\softaware\\auth-example\\src\\captureonlyIris.py';
+    const pythonScript = 'D:\Capstone\softaware\IrisPay\IrisRecognition_ML\src\captureonlyIris.py';
 
     // Execute the Python script
     exec(pythonScript, (error, stdout, stderr) => {
